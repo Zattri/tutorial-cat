@@ -1,20 +1,3 @@
-
-'''
-Each cat has:
-Name
-Breed
-Colour
-
-Behaviours:
-Feed it
-Meow
-Hiss
-Ignore you
-Wash it
-Scratch you
-Pet it
-
-'''
 import random
 
 class cat:
@@ -60,8 +43,17 @@ class cat:
     def sadReaction(self):
         print(self.name, "is sad")
 
+    def printCatDescription(self):
+        colourString = self.colour[0]
+        if (len(self.colour) > 1):
+            for x in range(1, len(self.colour)):
+                colourString += " and " + self.colour[x]
+        print("This is " + self.name + ", the " + colourString + " " + self.breed + " ")
+
+        
+
 def main():
-    bob = cat("Bob", "Maine coone", ["Black", "White"])
+    bob = cat("Bob", "Maine coone", ["Black"])
     while (True):
         command = input("What do you want to do with the cat? ")
         if (command == "wash"):
@@ -75,6 +67,9 @@ def main():
 
         elif (command == "feed"):
             bob.feedCat()
+
+        elif (command == "look"):
+            bob.printCatDescription()
 
         else:
             print("Your command was not recognised")
